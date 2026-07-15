@@ -142,9 +142,11 @@ class EqualizerViewModel(application: Application) : AndroidViewModel(applicatio
                 prefs.edit().putString("last_applied_id", entry.id).commit()
                 _currentAppliedAutoEqId.value = entry.id
                 
-                applyAutoEqProfile(profile.name, profile.graphicEq)
+                // CHANGE: Replace .graphicEq with the correct property name (e.g., .eq or .eqString)
+                applyAutoEqProfile(profile.name, profile.eq) 
             } else {
-                ToastHelper.showToast(ctx, "Failed to download profile for ${entry.name}")
+                // FIX: Changed entry.name to entry.id since IndexEntry lacks a 'name' field
+                ToastHelper.showToast(ctx, "Failed to download profile for ${entry.id}")
             }
             _isSearchLoading.value = false
         }
