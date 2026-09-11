@@ -843,3 +843,47 @@ fun ModernConfirmDialog(
         shape = MaterialTheme.shapes.extraLarge
     )
 }
+
+@Composable
+fun DolbyLogo(
+    modifier: Modifier = Modifier,
+    leftColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
+    rightColor: Color = MaterialTheme.colorScheme.primary
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            painter = painterResource(id = R.drawable.ic_dolby_logo_left),
+            contentDescription = null,
+            tint = leftColor,
+            modifier = Modifier
+                .fillMaxHeight()
+                .aspectRatio(1f)
+        )
+        Spacer(modifier = Modifier.width(4.dp))
+        Icon(
+            painter = painterResource(id = R.drawable.ic_dolby_logo_right),
+            contentDescription = null,
+            tint = rightColor,
+            modifier = Modifier
+                .fillMaxHeight()
+                .aspectRatio(1f)
+        )
+    }
+}
+
+@Composable
+fun tileSelectionBorder(isSelected: Boolean): BorderStroke? {
+    return if (isSelected) {
+        BorderStroke(
+            width = 1.5.dp,
+            color = MaterialTheme.colorScheme.primary
+        )
+    } else {
+        null
+    }
+}
+
